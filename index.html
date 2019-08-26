@@ -1,17 +1,46 @@
 <html>
 	<head>
+		<title>Tensorflow.js Image Classifier</title>
+
 		<!-- Load the latest version of TensorFlow.js -->
 		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
 		<script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
 		<script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+		<!-- Static -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<div id="console"></div>
-		<video autoplay playsinline muted id="webcam" width="224" height="224"></video>
-		<button id="class-a">Add A</button>
-		<button id="class-b">Add B</button>
-		<button id="class-c">Add C</button>
+		<header>
+			<nav class="navbar navbar-dark ic-nav">
+				<a class="navbar-brand" href="javascript:void(0)">
+					Image-Classifier
+					<span class="text-muted powered">Powered by TensorFlow.js</span>
+				</a>
+			</nav>
+		</header>
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-sm-6">
+					<video class="webcam" autoplay playsinline muted id="webcam" height="224" width="224"></video>
+				</div>
+				<div class="col-sm-6">
+					<div id="console"></div>
+					<div class="objects">
+						<input type="text" id="object-class-a">
+						<button class="btn btn-info object-btn" id="class-a">Add A</button>
+						<input type="text" id="object-class-b">
+						<button class="btn btn-info object-btn" id="class-b">Add B</button>
+						<input type="text" id="object-class-c">
+						<button class="btn btn-info object-btn" id="class-c">Add C</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- Load index.js after the content of the page -->
-		<script src="index.js"></script>
+		<script src="js/index.js"></script>
 	</body>
 </html>

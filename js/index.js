@@ -4,11 +4,14 @@ const webcamElement = document.getElementById('webcam');
 let net;
 
 async function app() {
-	console.log('Loading mobilenet..');
+	var console_content = `
+		Loading mobilenet...
+		Successfully loaded model!`;
 
 	// Load the model.
+	document.getElementById('console').innerText = "Loading mobilenet...";
 	net = await mobilenet.load();
-	console.log('Sucessfully loaded model');
+	document.getElementById('console').innerText = console_content;
 
 	await setupWebcam();
 
@@ -35,9 +38,12 @@ async function app() {
 			// Get the most likely class and confidences from the classifier module.
 			const result = await classifier.predictClass(activation);
 
-			const classes = ['A', 'B', 'C'];
-			document.getElementById('console').innerText = `
-				prediction: ${classes[result.classIndex]}\n
+			var class_a = document.getElementById('object-class-a').value;
+			var class_b = document.getElementById('object-class-b').value;
+			var class_c = document.getElementById('object-class-c').value;
+			const classes = [class_a, class_b, class_c];
+			document.getElementById('console').innerText = console_content + `
+				prediction: ${classes[result.classIndex]}
 				probability: ${result.confidences[result.classIndex]}
 			`;
 		}
